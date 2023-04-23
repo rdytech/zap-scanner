@@ -1,0 +1,24 @@
+on:
+  # Manually publish
+  workflow_dispatch:
+  # Alternatively, publish whenever changes are merged to the `main` branch.
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+
+    name: Scan the web apps
+
+    strategy:
+      matrix:
+        site: ['https://cloud.zambion.com', 'https://pentest.jobreadyplus.com']
+
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          target: ${{ matrix.site }}
