@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        site: ['https://cloud.zambion.com', 'https://pentest.jobreadyplus.com']
+        site: ['https://cloud.zambion.com', 'https://pentest.jobreadyplus.com', 'https://vtsupport.vtportal.com.au']
 
     steps:
       - name: ZAP Scan
